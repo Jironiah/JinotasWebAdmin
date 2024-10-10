@@ -1,0 +1,13 @@
+.fila{
+    padding: 15px;
+    border: 1px solid gray;
+}
+
+.fila:hover {
+    font-size: 20px;
+    background-color: beige;
+}
+
+.botonVolver{
+    margin-top: 20px
+}
