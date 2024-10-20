@@ -49,6 +49,7 @@ const TodasNotas = () => {
                     <Col>Código</Col>
                     <Col>Título</Col>
                     <Col>Contenido</Col>
+                    <Col>Usuario</Col>
                     <Col>Fecha</Col>
                     <Col></Col>
                 </Row>
@@ -59,6 +60,7 @@ const TodasNotas = () => {
                         </Col>
                         <Col>{nota.title}</Col>
                         <Col>{nota.textContent}</Col>
+                        <Col>{nota.user}</Col>
                         <Col>{nota.date}</Col>
                         <Col><Button variant='primary' onClick={() => handleClickEliminar(nota.Id)}> Eliminar Nota </Button></Col>
                     </Row>
