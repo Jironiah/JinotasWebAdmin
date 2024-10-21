@@ -55,7 +55,7 @@ function CrearNota() {
                                 />
                             </Col>
                             <Col md={4}>
-                                <Form.Label>userFrom</Form.Label>
+                                <Form.Label>De </Form.Label>
                                 <Form.Control
                                     type="text"
                                     value={userFrom}

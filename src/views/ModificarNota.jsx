@@ -1,6 +1,5 @@
-import { Container } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { updateNote } from '../controller/apiController';
 
@@ -12,8 +11,10 @@ function ModificarNota() {
   const date = selectedNote.date
   const defaultTitle = selectedNote.title
   const defaultTextContent = selectedNote.textContent
+  const defaultUserTo = selectedNote.userTo
   const [title, setTitle] = useState(defaultTitle)
   const [textContent, setTextContent] = useState(defaultTextContent)
+  const [userTo, setUserTo] = useState(defaultUserTo)
   const navigate = useNavigate();
 
   if (!selectedNote) {
@@ -36,18 +37,45 @@ function ModificarNota() {
       <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Titulo</Form.Label>
-            <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            <Row>
+              <Col md={8}>
+                <Form.Label>Título</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
+              </Col>
+              <Col md={4}>
+                <Form.Label>Para </Form.Label>
+                <Form.Control
+                  type="text"
+                  value={userTo}
+                  onChange={(e) => setUserTo(e.target.value)}
+                  required
+                />
+              </Col>
+            </Row>
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Example textarea</Form.Label>
-            <Form.Control as="textarea" rows={3} value={textContent} onChange={(e) => setTextContent(e.target.value)} required />
+            <Form.Label>Contenido</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={textContent}
+              onChange={(e) => setTextContent(e.target.value)}
+              required
+            />
           </Form.Group>
+
           <Button variant="primary" type="submit">
-            Modificar
+            Crear
           </Button>
         </Form>
-        <Button variant="primary" onClick={() => navigate('/')} className='botonVolver'>
+
+        <Button variant="primary" onClick={() => navigate('/')} className="botonVolver">
           Volver
         </Button>
       </Container>
