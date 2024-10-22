@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button, Tab, Tabs } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ModificarNota from './views/ModificarNota';
 import TodasNotas from './views/TodasNotas';
@@ -40,11 +40,22 @@ function App() {
         </div>
       )}
       {isAuthenticated && (
-        <Routes>
-          <Route path="/" element={<TodasNotas />} />
-          <Route path="/mostrarNota" element={<ModificarNota />} />
-          <Route path="/crearNota" element={<CrearNota />} />
-        </Routes>
+        <Tabs
+          defaultActiveKey="notes"
+          id="uncontrolled-tab-example"
+          className="mb-3"
+        >
+          <Tab eventKey="notes" title="Notes">
+            <Routes>
+              <Route path="/" element={<TodasNotas />} />
+              <Route path="/mostrarNota" element={<ModificarNota />} />
+              <Route path="/crearNota" element={<CrearNota />} />
+            </Routes>
+          </Tab>
+          <Tab eventKey="user_token" title="User y Token">
+            Tab content for Profile
+          </Tab>
+        </Tabs>
       )}
     </div>
   );
