@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { Card, Form, Button, Tab, Tabs } from 'react-bootstrap';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ModificarNota from './views/ModificarNota';
-import TodasNotas from './views/TodasNotas';
-import CrearNota from './views/CrearNota';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import ModificarNota from './viewsNotes/ModificarNota';
+import TodasNotas from './viewsNotes/TodasNotas';
+import CrearNota from './viewsNotes/CrearNota';
+import TodosUserToken from './viewsUserToken/TodosUserToken';
+import ModificarUserToken from './viewsUserToken/ModificarUserToken';
+import CrearUserToken from './viewsUserToken/CrearUserToken';
 
 function App() {
   const PASSWORD = import.meta.env.VITE_PASSWORD_ENTRANCE;
   const [password, setPassword] = useState("")
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +21,11 @@ function App() {
     } else {
       alert('Contraseña incorrecta');
     }
+  };
+
+  const handleSelectTab = (key) => {
+    // Cambiar de tab y navegar a la raíz
+    navigate('/');
   };
 
   return (
@@ -44,6 +53,7 @@ function App() {
           defaultActiveKey="notes"
           id="uncontrolled-tab-example"
           className="mb-3"
+          onSelect={handleSelectTab} // Aquí vinculamos la función al evento onSelect
         >
           <Tab eventKey="notes" title="Notes">
             <Routes>
@@ -53,7 +63,11 @@ function App() {
             </Routes>
           </Tab>
           <Tab eventKey="user_token" title="User y Token">
-            Tab content for Profile
+            <Routes>
+              <Route path="/" element={<TodosUserToken />} />
+              <Route path="/mostrarUserToken" element={<ModificarUserToken />} />
+              <Route path="/crearUserToken" element={<CrearUserToken />} />
+            </Routes>
           </Tab>
         </Tabs>
       )}
