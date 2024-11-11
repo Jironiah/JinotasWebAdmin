@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Card, Form, Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ModificarNota from './views/ModificarNota';
-import TodasNotas from './views/TodasNotas';
-import CrearNota from './views/CrearNota';
+import { Card, Form, Button, Tab, Tabs } from 'react-bootstrap';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import ModificarNota from './viewsNotes/ModificarNota';
+import TodasNotas from './viewsNotes/TodasNotas';
+import CrearNota from './viewsNotes/CrearNota';
+import TodosUserToken from './viewsUserToken/TodosUserToken';
 
 function App() {
   const PASSWORD = import.meta.env.VITE_PASSWORD_ENTRANCE;
   const [password, setPassword] = useState("")
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +19,11 @@ function App() {
     } else {
       alert('Contraseña incorrecta');
     }
+  };
+
+  const handleSelectTab = (key) => {
+    // Cambiar de tab y navegar a la raíz
+    navigate('/');
   };
 
   return (
@@ -40,11 +47,25 @@ function App() {
         </div>
       )}
       {isAuthenticated && (
-        <Routes>
-          <Route path="/" element={<TodasNotas />} />
-          <Route path="/mostrarNota" element={<ModificarNota />} />
-          <Route path="/crearNota" element={<CrearNota />} />
-        </Routes>
+        <Tabs
+          defaultActiveKey="notes"
+          id="uncontrolled-tab-example"
+          className="mb-3"
+          onSelect={handleSelectTab} // Aquí vinculamos la función al evento onSelect
+        >
+          <Tab eventKey="notes" title="Notes">
+            <Routes>
+              <Route path="/" element={<TodasNotas />} />
+              <Route path="/mostrarNota" element={<ModificarNota />} />
+              <Route path="/crearNota" element={<CrearNota />} />
+            </Routes>
+          </Tab>
+          <Tab eventKey="user_token" title="User y Token">
+            <Routes>
+              <Route path="/" element={<TodosUserToken />} />
+            </Routes>
+          </Tab>
+        </Tabs>
       )}
     </div>
   );

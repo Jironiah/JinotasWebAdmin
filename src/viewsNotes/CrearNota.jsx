@@ -8,7 +8,7 @@ function CrearNota() {
     const [title, setTitle] = useState("");
     const [textContent, setTextContent] = useState("");
     const [code, setCode] = useState(0);
-    const [userFrom, setUserFrom] = useState("")
+    const [userFrom, setUserFrom] = useState("");
     const date = new Date().toISOString().split('T')[0].replace(/-/g, '/');
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function CrearNota() {
         console.log("Nuevo título:", title);
         console.log("Nuevo contenido:", textContent);
         console.log("Nuevo code (hash code):", code);
-        console.log("Nuevo userFrom;", userFrom)
+        console.log("Nuevo userFrom;", userFrom);
         console.log("Nueva date:", date);
 
         addNota({ title, code, textContent, date, userFrom })
@@ -41,9 +41,9 @@ function CrearNota() {
 
     return (
         <>
-            <Container>
+            <Container fluid style={{ padding: '20px', maxWidth: '800px' }}>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-4" controlId="titulo">
                         <Row>
                             <Col md={8}>
                                 <Form.Label>Título</Form.Label>
@@ -55,7 +55,7 @@ function CrearNota() {
                                 />
                             </Col>
                             <Col md={4}>
-                                <Form.Label>De </Form.Label>
+                                <Form.Label>De</Form.Label>
                                 <Form.Control
                                     type="text"
                                     value={userFrom}
@@ -66,25 +66,30 @@ function CrearNota() {
                         </Row>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Group className="mb-4" controlId="contenido">
                         <Form.Label>Contenido</Form.Label>
                         <Form.Control
                             as="textarea"
-                            rows={3}
+                            rows={5}
                             value={textContent}
                             onChange={(e) => setTextContent(e.target.value)}
                             required
                         />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Crear
-                    </Button>
+                    <Row className="mt-3">
+                        <Col xs="auto">
+                            <Button variant="primary" type="submit">
+                                Crear
+                            </Button>
+                        </Col>
+                        <Col xs="auto">
+                            <Button variant="secondary" onClick={() => navigate('/')} className="botonVolver">
+                                Volver
+                            </Button>
+                        </Col>
+                    </Row>
                 </Form>
-
-                <Button variant="primary" onClick={() => navigate('/')} className="botonVolver">
-                    Volver
-                </Button>
             </Container>
         </>
     );

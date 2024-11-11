@@ -1,0 +1,49 @@
+/* TodosUserToken.css */
+
+/* Estilo de los encabezados de las columnas */
+.header-row {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Alinear las columnas de los datos */
+.fila {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.fila:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Puntero en el nombre de usuario para indicar que es clicable */
+.pointer {
+    cursor: pointer;
+}
+
+/* Centrar el contenido de las columnas */
+.user-col,
+.token-col {
+    text-align: center;
+    font-size: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Botón de acción en la columna derecha */
+button {
+    width: 100%;
+    max-width: 150px;
+    font-size: 0.9rem;
+}
