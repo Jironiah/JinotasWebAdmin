@@ -5,8 +5,6 @@ import ModificarNota from './viewsNotes/ModificarNota';
 import TodasNotas from './viewsNotes/TodasNotas';
 import CrearNota from './viewsNotes/CrearNota';
 import TodosUserToken from './viewsUserToken/TodosUserToken';
-import ModificarUserToken from './viewsUserToken/ModificarUserToken';
-import CrearUserToken from './viewsUserToken/CrearUserToken';
 
 function App() {
   const PASSWORD = import.meta.env.VITE_PASSWORD_ENTRANCE;
@@ -65,8 +63,6 @@ function App() {
           <Tab eventKey="user_token" title="User y Token">
             <Routes>
               <Route path="/" element={<TodosUserToken />} />
-              <Route path="/mostrarUserToken" element={<ModificarUserToken />} />
-              <Route path="/crearUserToken" element={<CrearUserToken />} />
             </Routes>
           </Tab>
         </Tabs>

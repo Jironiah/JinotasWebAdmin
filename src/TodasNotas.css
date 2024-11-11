@@ -1,0 +1,58 @@
+/* TodasNotas.css */
+
+/* Estilo de los títulos de las columnas */
+.titulo-notas {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+}
+
+/* Estilo para las filas de notas */
+.nota-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Efecto de hover en las filas */
+.nota-row:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para las celdas de contenido largo (para evitar que el texto se salga del contenedor) */
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Alineación central para las columnas de la fila de notas */
+.nota-row .text-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botones en las filas */
+.nota-row .btn {
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* Estilo para el botón Crear Nota */
+.mt-4 .btn-primary {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+}
